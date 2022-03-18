@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkedList_ArrayList_Cs_MarcoLopez.LinkedList
+namespace LinkedList_ArrayList_Cs_MarcoLopez.LinkedList_ArrayList
 {
-    internal class LinkedListIterator
+    internal class LinkedListIterator<T>:Iterator<T>
     {
-        private Node currentNode; //Este es como el aux
+        private Node<T> currentNode; //Este es como el aux
 
         //Constructor
-        public LinkedListIterator(Node startNode)
+        public LinkedListIterator(Node<T> startNode)
         {
             currentNode = startNode;
         }
@@ -22,9 +22,9 @@ namespace LinkedList_ArrayList_Cs_MarcoLopez.LinkedList
             return currentNode != null;
         }
 
-        public string next()
+        public T next()
         {
-            string data = currentNode.data;
+            T data = currentNode.data;
             currentNode = currentNode.next;
             return data;
         }

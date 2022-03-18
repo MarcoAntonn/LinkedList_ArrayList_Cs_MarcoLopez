@@ -4,47 +4,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkedList_ArrayList_Cs_MarcoLopez.LinkedList
+namespace LinkedList_ArrayList_Cs_MarcoLopez.LinkedList_ArrayList
 {
-    internal class Node
+    internal class Node<T>
     {
-        public string data; //Los atributos se inicializan en null por defaul
-        public Node next;
-        public Node previous;
+        public T data; //Los atributos se inicializan en null por defaul
+        public Node<T> next;
+        public Node<T> previous;
 
         //Constructor
-        public Node(string data)
+        public Node(T data)
         {
             this.data = data;
         }
 
         //Esto no está en el codigo PLANTUML
-        public void setData(String data)
+        public void setData(T data)
         {
             this.data = data;
         }
 
-        public void setNext(Node next)
+        public void setNext(Node<T> next)
         {
             this.next = next;
         }
 
-        public void setPrevious(Node previous)
+        public void setPrevious(Node<T> previous)
         {
             this.previous = previous;
         }
 
-        public Node getNext()
+        public Node<T> getNext()
         {
             return next;
         }
 
-        public Node getPrevious()
+        public Node<T> getPrevious()
         {
             return previous;
         }
 
-        public String getData()
+        public T getData()
         {
             return data;
         }

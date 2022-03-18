@@ -4,28 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkedList_ArrayList_Cs_MarcoLopez.ArrayList
+namespace LinkedList_ArrayList_Cs_MarcoLopez.LinkedList_ArrayList
 {
-    internal class ArrayList1
+    internal class ArrayList1<T>:List<T>
     {
-        private static int DEFAULT_SIZE = 2; //Esto es una declaración de constantes
-        private String[] array;
+        private const int DEFAULT_SIZE = 2; //Esto es una declaración de constantes
+        private T[] array;
         private int size;
 
         //Sobrecarga (cuando no le pasan parámetros)
         public ArrayList1()
         {
-            array = new String[DEFAULT_SIZE];
+            array = (T[]) new T[DEFAULT_SIZE];
         }
 
         //Constructor
         public ArrayList1(int size)
         {
-            array = new String[size];
+            array = (T[])new T[size];
         }
 
         //Adds
-        public void addAtTail(String data)
+        public void addAtTail(T data)
         {
             if (size == array.Length)
             { //Si el numero de datos validos y el tamaño del arreglo, entonces ya no cabe y se usa el metodo increaseArraySize
@@ -36,7 +36,7 @@ namespace LinkedList_ArrayList_Cs_MarcoLopez.ArrayList
             size++;
         }
 
-        public void addAtFront(string data)
+        public void addAtFront(T data)
         {
             if (size == array.Length)
             {
@@ -63,7 +63,7 @@ namespace LinkedList_ArrayList_Cs_MarcoLopez.ArrayList
             {
                 Array.Copy(array, index + 1, array, index, size - 1 - index);
             }
-            array[size - 1] = null; //Aqui el garbage collector recoge despues la info sobrante
+            array[size - 1] = default(T); //Aqui el garbage collector recoge despues la info sobrante
             size--;
         }
 
@@ -71,13 +71,13 @@ namespace LinkedList_ArrayList_Cs_MarcoLopez.ArrayList
         {
             for (int i = 0; i < size; i++)
             {
-                array[i] = null;
+                array[i] = default(T);
             }
             size = 0;
         }
 
         //Setters
-        public void setAt(int index, String data)
+        public void setAt(int index, T data)
         {
             if (index >= 0 && index < size)
             {
@@ -86,9 +86,9 @@ namespace LinkedList_ArrayList_Cs_MarcoLopez.ArrayList
         }
 
         //Getters
-        public String getAt(int index)
+        public T getAt(int index)
         {
-            return index >= 0 && index < size ? array[index] : null; //Si index es mayor o igual a 0 y menor que size, entonces array[inndex] es igual a null
+            return index >= 0 && index < size ? array[index] : default(T); //Si index es mayor o igual a 0 y menor que size, entonces array[inndex] es igual a null
         }
 
         public int getSize()
@@ -96,9 +96,9 @@ namespace LinkedList_ArrayList_Cs_MarcoLopez.ArrayList
             return size;
         }
 
-        public ArrayListIterator getIterator()
+        public Iterator<T> getIterator()
         {
-            return new ArrayListIterator(this);
+            return new ArrayListIterator<T>(this);
         }
 
         public static String getName()
@@ -109,7 +109,7 @@ namespace LinkedList_ArrayList_Cs_MarcoLopez.ArrayList
         //Otros métodos
         private void increaseArraySize()
         {
-            String[] newArray = new String[array.Length * 2];
+            T[] newArray = (T[]) new T[array.Length * 2];
 
             for (int i = 0; i < size; i++)
             {
@@ -119,4 +119,6 @@ namespace LinkedList_ArrayList_Cs_MarcoLopez.ArrayList
         }
     }
 }
+
+
 
